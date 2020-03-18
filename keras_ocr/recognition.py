@@ -203,7 +203,6 @@ def build_model(alphabet,
     inputs = keras.layers.Input((height, width, 3 if color else 1))
     x = keras.layers.Permute((2, 1, 3))(inputs)
     x = keras.layers.Lambda(lambda x: x[:, :, ::-1])(x)
-    x = tf.keras.backend.cast(x)
     x = keras.layers.Conv2D(filters[0], (3, 3), activation='relu', padding='same', name='conv_1')(x)
     x = keras.layers.Conv2D(filters[1], (3, 3), activation='relu', padding='same', name='conv_2')(x)
     x = keras.layers.Conv2D(filters[2], (3, 3), activation='relu', padding='same', name='conv_3')(x)

@@ -146,7 +146,7 @@ def get_text_generator(alphabet=None, lowercase=False, max_string_length=None):
 
 
         if max_string_length is not None:
-            sentence = sentence[:max_string_length]
+            sentence = sentence[:(max_string_length+len(end_sentence))]
         
         sentence += end_sentence
 

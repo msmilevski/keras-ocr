@@ -124,14 +124,32 @@ def get_text_generator(alphabet=None, lowercase=False, max_string_length=None):
         lowercase: Whether to convert all strings to lowercase.
         max_string_length: The maximum length of the string
     """
+    digits = string.digits
+    special_characters = '-\"\'\\/'
     gen = essential_generators.DocumentGenerator()
     while True:
         sentence = gen.sentence()
         if lowercase:
             sentence = sentence.lower()
         sentence = ''.join([s for s in sentence if (alphabet is None or s in alphabet)])
+        
+        end_sentence = ''
+        for i in range(2):
+            end_sentence += digits[np.random.randint(len(digits))]
+            end_sentence += special_characters[np.random.randint(len(special_characters))]
+            if sentence[-1] == '\\' or sentence[-1] == '/':
+                end_sentence += digits[np.random.randint(len(digits))]
+                end_sentence += '\'\"'[np.random.randint(2)]
+
+            if i == 0:
+                end_sentence += ' = '
+
+
         if max_string_length is not None:
             sentence = sentence[:max_string_length]
+        
+        sentence += end_sentence
+
         yield sentence
 
 

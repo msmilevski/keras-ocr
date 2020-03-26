@@ -128,10 +128,10 @@ def get_text_generator(alphabet=None, lowercase=False, max_string_length=None):
     special_characters = '-\"\'\\/'
     gen = essential_generators.DocumentGenerator()
     while True:
-        sentence = gen.sentence()
-        if lowercase:
-            sentence = sentence.lower()
-        sentence = ''.join([s for s in sentence if (alphabet is None or s in alphabet)])
+        #sentence = gen.sentence()
+        #if lowercase:
+        #    sentence = sentence.lower()
+        #sentence = ''.join([s for s in sentence if (alphabet is None or s in alphabet)])
         
         end_sentence = ''
         for i in range(2):
@@ -145,12 +145,12 @@ def get_text_generator(alphabet=None, lowercase=False, max_string_length=None):
                 end_sentence += ' = '
 
 
-        if max_string_length is not None:
-            sentence = sentence[:(max_string_length+len(end_sentence + 1))]
-        
-        sentence += end_sentence
+        #if max_string_length is not None:
+        #    sentence = sentence[:(max_string_length+len(end_sentence + 1))]
+        #
+        #sentence += end_sentence
 
-        yield sentence
+        yield end_sentence
 
 
 def _strip_line(line):

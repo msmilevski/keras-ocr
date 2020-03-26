@@ -137,7 +137,7 @@ def get_text_generator(alphabet=None, lowercase=False, max_string_length=None):
         for i in range(2):
             end_sentence += digits[np.random.randint(len(digits))]
             end_sentence += special_characters[np.random.randint(len(special_characters))]
-            if sentence[-1] == '\\' or sentence[-1] == '/':
+            if end_sentence[-1] in ['\\', '/', '-']:
                 end_sentence += digits[np.random.randint(len(digits))]
                 end_sentence += '\'\"'[np.random.randint(2)]
 

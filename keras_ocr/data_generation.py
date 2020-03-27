@@ -131,7 +131,7 @@ def get_text_generator(alphabet=None, lowercase=False, max_string_length=None):
             sentence = sentence.lower()
         sentence = ''.join([s for s in sentence if (alphabet is None or s in alphabet)])
         
-        sentence = '-=\\\'\"' + sentence
+        sentence = '-=\\\'\"'[np.random.randint(5)] + sentence
         if max_string_length is not None:
             sentence = sentence[:max_string_length]
         
